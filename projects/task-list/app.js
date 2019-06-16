@@ -15,6 +15,8 @@ function loadEventListeners() {
     // Remove task event 
     // Because the tasks are dynamic, use event delegation (listener on parent task list)
     taskList.addEventListener('click', removeTask);
+    // Clear task event 
+    clearBtn.addEventListener('click', clearTasks);
 }
 
 // Add task
@@ -53,5 +55,17 @@ function removeTask(e) {
         if(confirm('Are you sure?')) {
             e.target.parentElement.parentElement.remove();
         }
+    }
+}
+
+// Clear tasks 
+function clearTasks(e) {
+    // // innerHTML
+    // taskList.innerHTML = '';
+
+    // remove first child
+    // Faster while loop 
+    while(taskList.firstChild) {
+        taskList.removeChild(taskList.firstChild);
     }
 }
